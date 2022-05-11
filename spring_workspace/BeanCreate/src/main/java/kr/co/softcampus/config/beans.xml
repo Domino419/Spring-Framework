@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	                    http://www.springframework.org/schema/beans/spring-beans.xsd
+	                    http://www.springframework.org/schema/context
+	                    http://www.springframework.org/schema/context/spring-context.xsd
+	                    http://www.springframework.org/schema/aop
+	                    http://www.springframework.org/schema/aop/spring-aop.xsd">
+	                    
+	<!-- xml을 로딩할 때 자동으로 객체가 생성된다. -->
+	<!-- 현재까지의 학습 진도 상 Id속성이 없다면 객체의 주소값을 받아서 사용할 수 없다. 자동주입이라는 개념 사용하면 가능하지만 
+		아직 진도 안나감.. -->
+	<bean class='kr.co.softcampus.beans.TestBean' />
+
+	<!-- xml을 로딩할 때 자동으로 객체가 생성된다. -->
+	<!-- id 속성에 이름을 부여하면 getBean 메서드를 통해 객체의 주소값을 받아 사용할 수 있다. -->
+	<!-- 생성된 객체는 더이상 생성되지 않는다 (singleton) -->
+	<bean id='test1' class='kr.co.softcampus.beans.TestBean' />
+	
+	<!-- lazy-init : true - xml을 로딩할 때 객체가 생성되지 않는다. (생략하면 default값으로 false 적용됨)  -->
+	<!-- getBean 메서드를 호출할 때 객체가 생성되며 singletone 이기 때문에 객체는 하나만 생성된다. -->
+	<bean id='test2' class='kr.co.softcampus.beans.TestBean' lazy-init="true" />
+	
+	
+	<!-- Scope : prototype - xml을 로딩할 때 객체가 생성되지 않는다. -->
+	<!-- getBean 메서드를 호출할 때 마다 새로운 객체를 생성해서 반환한다. -->
+	<bean id='test3' class='kr.co.softcampus.beans.TestBean' scope='prototype' />
+
+
+ <!-- xml 작성시 쌍따옴표, 외따옴표 모두 가능 -->
+ <!-- Bean 작성시  Scope를 생략하면 싱글톤으로 세팅되고, 겟빈 할 때마다 같은 주소를 반환 -->
+ 
+</beans>
+	                    
